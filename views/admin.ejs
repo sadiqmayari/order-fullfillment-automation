@@ -1,0 +1,15 @@
+<!-- views/admin.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Order Fulfillment Automation</title>
+  </head>
+  <body>
+    <h1>🛍️ Shopify + Leopards Automation</h1>
+    <form action="/api/shopify/book" method="post">
+      <label>Order ID:</label>
+      <input name="order_id" required />
+      <button type="submit">Book with Leopards</button>
+    </form>
+  </body>
+</html>
