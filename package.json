@@ -1,22 +1,18 @@
 {
   "name": "order-fulfillment-automation",
   "version": "1.0.0",
-  "description": "Automated Shopify order fulfillment and courier integration",
-  "type": "module",
+  "description": "Custom Shopify app for auto-fulfillment and Leopards integration",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "cron": "node cron.js"
+    "start": "node index.js"
   },
   "dependencies": {
-    "axios": "^1.6.0",
-    "body-parser": "^1.20.2",
+    "@shopify/shopify-api": "^12.0.0",
+    "@shopify/shopify-app-express": "^3.0.0",
+    "axios": "^1.6.7",
     "dotenv": "^16.3.1",
-    "ejs": "^3.1.9",
     "express": "^4.19.2",
-    "node-cron": "^3.0.3"
-  },
-  "keywords": [],
-  "author": "Muhammad Sadiq",
-  "license": "MIT"
+    "ejs": "^3.1.9"
+  }
 }
