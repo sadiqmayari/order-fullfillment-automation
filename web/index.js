@@ -76,15 +76,15 @@ app.post("/api/products", async (_req, res) => {
 app.use(shopify.cspHeaders());
 app.use(serveStatic(STATIC_PATH, { index: false }));
 
-app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
-  return res
-    .status(200)
-    .set("Content-Type", "text/html")
-    .send(
-      readFileSync(join(STATIC_PATH, "index.html"))
-        .toString()
-        .replace("%VITE_SHOPIFY_API_KEY%", process.env.SHOPIFY_API_KEY || "")
-    );
+app.use("/*", async (req, res, next) => {
+  const shop = req.query.shop;
+
+  if (!shop) {
+    return res.status(400).send("❌ No shop provided in URL.");
+  }
+
+  return shopify.ensureInstalledOnShop()(req, res, next);
 });
+
 
 app.listen(PORT);
