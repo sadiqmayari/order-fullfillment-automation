@@ -25,8 +25,12 @@ app.get(shopify.config.auth.path, shopify.auth.begin());
 app.get(
   shopify.config.auth.callbackPath,
   shopify.auth.callback(),
-  shopify.redirectToShopifyOrAppRoot()
+  async (_req, res) => {
+    const { shop } = res.locals.shopify.session;
+    res.redirect(`/exitiframe?shop=${shop}`);
+  }
 );
+
 app.post(
   shopify.config.webhooks.path,
   shopify.processWebhooks({ webhookHandlers: PrivacyWebhookHandlers })
