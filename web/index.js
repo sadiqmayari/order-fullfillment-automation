@@ -27,7 +27,7 @@ app.get(
   shopify.auth.callback(),
   async (_req, res) => {
     const { shop } = res.locals.shopify.session;
-    res.redirect(`/exitiframe?shop=${shop}`);
+    res.redirect(`/?shop=${shop}`);
   }
 );
 
