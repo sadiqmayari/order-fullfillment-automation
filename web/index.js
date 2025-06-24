@@ -57,11 +57,13 @@ app.use("/*", async (req, res, next) => {
   const shop = req.query.shop;
 
   if (!shop) {
-    return res.status(400).send("❌ Error: shop query missing in URL.");
+    // 🔁 redirect to auth if shop is missing
+    return res.redirect(`/api/auth?shop=quickstart-0411dcd7.myshopify.com`);
   }
 
   return shopify.ensureInstalledOnShop()(req, res, next);
 });
+
 
 // Static index.html serve
 app.use("/*", async (_req, res) => {
