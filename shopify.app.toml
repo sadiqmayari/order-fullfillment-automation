@@ -3,11 +3,12 @@
 client_id = "206016a2be1f98585fa43f977ee3e945"
 name = "Order Fullfillment Automation"
 handle = "order-fullfillment-automation"
-application_url = "https://order-fulfillment-automation.onrender.com/"
+application_url = "https://cookies-ccd-dakota-application.trycloudflare.com"
 embedded = false
 
 [build]
 include_config_on_deploy = true
+automatically_update_urls_on_dev = true
 
 [webhooks]
 api_version = "2025-04"
@@ -21,9 +22,13 @@ api_version = "2025-04"
   uri = "/webhooks/app/scopes_update"
 
 [auth]
-redirect_urls = [
-  "https://order-fulfillment-automation.onrender.com/api/auth/callback"
-]
+redirect_urls = ["https://cookies-ccd-dakota-application.trycloudflare.com/auth/callback", "https://cookies-ccd-dakota-application.trycloudflare.com/auth/shopify/callback", "https://cookies-ccd-dakota-application.trycloudflare.com/api/auth/callback"]
 
 [pos]
 embedded = false
+
+[[web]]
+type = "backend"
+roles = ["backend"]
+command = "npm run dev"
+path = "."
