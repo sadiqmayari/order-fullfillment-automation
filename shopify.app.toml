@@ -1,3 +1,29 @@
-# This file stores configurations for your Shopify app.
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-scopes = "write_products"
+client_id = "206016a2be1f98585fa43f977ee3e945"
+name = "Order Fullfillment Automation"
+handle = "order-fullfillment-automation"
+application_url = "https://order-fulfillment-automation.onrender.com/"
+embedded = false
+
+[build]
+include_config_on_deploy = true
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[auth]
+redirect_urls = [
+  "https://order-fulfillment-automation.onrender.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
